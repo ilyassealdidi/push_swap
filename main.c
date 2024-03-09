@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:41:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/09 15:26:15 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/09 15:35:39 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	*get_number(char *num)
 	return (number);
 }
 
-// "  23 75  -1 " " 10" "10 "
 t_list	*extract_numbers(char **args)
 {
 	char	**nums;
@@ -50,9 +49,9 @@ t_list	*extract_numbers(char **args)
 		nums = ft_split(*args, ' ');
 		if (!nums)
 			exiter();
-		while (nums && *nums)
+		while (*nums)
 		{
-			number = get_number(*nums);
+			number = get_number(*nums++);
 			if (!number)
 				exiter();
 			item = ft_lstnew(number);
@@ -60,7 +59,6 @@ t_list	*extract_numbers(char **args)
 				head = item;
 			else
 				ft_lstadd_back(&head, item);
-			nums++;
 		}
 		args++;
 	}
@@ -69,14 +67,16 @@ t_list	*extract_numbers(char **args)
 
 int	main(int ac, char **av)
 {
-	int	*number;
+	t_list	*list;
 	if (ac >= 2)
 	{
-		number = extract_numbers(av + 1);
-			
-		while (*number)
+		list = extract_numbers(av + 1);
+		if (!list)
+			return (EXIT_FAILURE);
+		while (list)
 		{
-			ft_printf("%d\n", number++);
+			ft_printf("%d\n", *(int *)(list->content));
+			list = list->next;
 		}
 	}
 	return (EXIT_SUCCESS);
