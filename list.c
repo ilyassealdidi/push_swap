@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 09:26:25 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/10 10:00:41 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/10 15:29:31 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int	ft_lstappenditem(t_list **lst, void *content)
 		*lst = item;
 	else if (!ft_lstgetitem(*lst, content))
 		return (ft_lstadd_back(lst, item), 1);
+	free(item);
 	return (0);
 }

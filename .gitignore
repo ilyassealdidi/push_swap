@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
-
+vgcore*
+*.txt*
 # Object files
 *.o
 *.ko

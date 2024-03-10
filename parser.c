@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 08:46:04 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/10 15:02:21 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/10 15:29:07 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ t_list	*extract_numbers(char **strs)
 		if (!nums)
 			return (NULL);
 		if (!nums[0])
-			return (free_memory(nums), NULL);
+			return (ft_lstclear(&head, free), free_memory(nums), NULL);
 		while (nums[++i])
 		{
 			number = get_number(nums[i]);
 			if (!number || !ft_lstappenditem(&head, number))
-				return (ft_lstclear(&head, free), NULL);
+				return (free(number), free_memory(nums), ft_lstclear(&head, free), NULL);
 		}
 		free_memory(nums);
 	}
