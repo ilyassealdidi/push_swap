@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:41:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/10 10:32:57 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/10 12:10:52 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 void	exiter()
 {
 	ft_printf("Error\n");
-	exit(0);
+	exit(1);
 }
 
 int	main(int ac, char **av)
 {
-	t_object	obj;
+	// t_object	obj;
 	t_list		*item;
 
 	item = NULL;

@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 08:46:04 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/10 10:34:11 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/10 12:03:32 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_list	*extract_numbers(char **args)
 	while (*args)
 	{
 		nums = ft_split(*args++, ' ');
-		if (!nums)
+		if (!nums || !*nums)
 			exiter();
 		while (*nums)
 		{
