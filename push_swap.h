@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:30:57 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/10 09:54:25 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/10 14:41:48 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ typedef struct s_object
 }	t_object;
 
 int		ft_lstappenditem(t_list **lst, void *content);
-t_list	*extract_numbers(char **args);
+int		parse(t_object *obj, char **strs);
 void	exiter(void);
+void	free_memory(char **strs);
 
 #endif
