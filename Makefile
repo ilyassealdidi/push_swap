@@ -1,8 +1,8 @@
 NAME = push_swap
 
-SRCS = main.c
+SRCS = main.c parser.c list.c
 
-CFLAGS = #-Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror 
 
 LIBFT = utils/libft/libft.a
 

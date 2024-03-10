@@ -6,7 +6,7 @@
             "command": "/usr/bin/clang",
             "args": [
                 "-g",
-                "main.c",
+                "*.c",
                 "utils/libft/libft.a",
                 "utils/ft_printf/libftprintf.a",
                 "-o",

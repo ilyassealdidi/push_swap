@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/09 11:41:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/10 10:32:57 by ialdidi          ###   ########.fr       */
+/*   Created: 2024/03/10 09:26:25 by ialdidi           #+#    #+#             */
+/*   Updated: 2024/03/10 10:00:41 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-void	exiter()
+t_list	*ft_lstgetitem(t_list *lst, void *content)
 {
-	ft_printf("Error\n");
-	exit(0);
+	while (lst != NULL)
+	{
+		if (*(long *)(lst->content) == *(long *)content)
+			return (lst);
+		lst = lst->next;
+	}
+	return (lst);
 }
 
-int	main(int ac, char **av)
+int	ft_lstappenditem(t_list **lst, void *content)
 {
-	t_object	obj;
-	t_list		*item;
+	t_list	*item;
 
-	item = NULL;
-	if (ac >= 2)
-	{
-		item = extract_numbers(av + 1);
-		if (!item)
-			return (EXIT_FAILURE);
-		while (item)
-		{
-			ft_printf("%d\n", *(int *)(item->content));
-			item = item->next;
-		}
-	}
-	else
-		ft_printf("Invalid number of arguments");
-	return (EXIT_SUCCESS);
+	item = ft_lstnew(content);
+	if (!item)
+		return (0);
+	if (!lst)
+		*lst = item;
+	else if (!ft_lstgetitem(*lst, content))
+		return (ft_lstadd_back(lst, item), 1);
+	return (0);
 }

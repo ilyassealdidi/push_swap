@@ -57,3 +57,4 @@ dkms.conf
 main
 test.c
 push_swap*
+!*.h

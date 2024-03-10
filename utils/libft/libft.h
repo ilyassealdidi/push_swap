@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:24:11 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/09 12:44:48 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/10 08:24:14 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -81,6 +82,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 /* ************************************************************************** */
 /*                          Additionnal Functions                             */
 /* ************************************************************************** */
+long	ft_atol(const char *str);
 char	*ft_strpbrk(const char *s, const char *charset);
 size_t	ft_strspn(const char *s, const char *charset);
 
