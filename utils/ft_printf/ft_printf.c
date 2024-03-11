@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 08:48:43 by ialdidi           #+#    #+#             */
-/*   Updated: 2023/11/20 09:31:50 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/10 18:13:01 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	check_format(char format, va_list args)
 		return (ft_print_address((unsigned long)va_arg(args, void *)) + 2);
 	}
 	else
-		return ft_putchar(format);
+		return (ft_putchar(format));
 }
 
 int	ft_printf(const char *s, ...)

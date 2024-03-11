@@ -6,12 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:41:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/10 15:10:30 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/10 18:12:39 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	free_memory(char **strs)
 {
@@ -19,7 +18,7 @@ void	free_memory(char **strs)
 
 	i = -1;
 	while (1)
-	{	
+	{
 		free(strs[++i]);
 		if (!strs[i])
 			break ;
@@ -27,8 +26,7 @@ void	free_memory(char **strs)
 	free(strs);
 }
 
-
-void	exiter()
+void	exiter(void)
 {
 	ft_printf("Error\n");
 	exit(1);
