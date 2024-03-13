@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRCS = main.c parser.c list.c
+SRCS = *.c
 
 CFLAGS = -Wall -Wextra -Werror 
 

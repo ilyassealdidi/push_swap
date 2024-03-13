@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 08:46:04 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/10 15:46:32 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/13 15:49:34 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ t_list	*extract_numbers(char **strs)
 	{
 		i = -1;
 		nums = ft_split(*strs++, ' ');
-		if (!nums)
-			return (NULL);
-		if (!nums[0])
+		if (!nums || !nums[0])
 			return (ft_lstclear(&head, free), free_memory(nums), NULL);
 		while (nums[++i])
 		{
@@ -62,13 +60,9 @@ t_list	*extract_numbers(char **strs)
 	return (head);
 }
 
-int	parse(t_object *obj, char **strs)
+void	list_init(t_object *obj, char **strs)
 {
-	t_list	*list;
-
-	list = extract_numbers(strs);
-	if (!list)
+	obj->stack_a = extract_numbers(strs);
+	if (!obj->stack_a)
 		exiter();
-	obj->numbers = list;
-	return (1);
 }
