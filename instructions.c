@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:44:06 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/13 18:34:25 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/13 19:41:05 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,13 @@ void	swap(t_list *stack_a, t_list *stack_b)
 
 void	push(t_list **stack_from, t_list **stack_to, char *instruction)
 {
-	t_list	*item;
 	t_list	*tmp;
-	// A 1 2 3
-	// B 
+
 	if (!stack_from)
 		return ;
-	item = *stack_from;
-	tmp = item->next;
-	// item->next = NULL;
-	if (stack_to)
-		ft_lstadd_front(stack_to, item);
-	else
-		*stack_to = item;
-	*stack_to = NULL;
+	tmp = (*stack_from)->next;
+	(*stack_from)->next = NULL;
+	ft_lstadd_front(stack_to, (*stack_from));
 	*stack_from = tmp;
 	ft_printf("%s\n", instruction);
 }

@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:41:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/13 18:34:03 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/13 19:42:31 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,13 @@ void	print_list(t_list *list)
 int	main(int ac, char **av)
 {
 	t_object	obj;
-	t_list		*item;
 
-	item = NULL;
+	//obj.stack_b = NULL;
+	if (obj.stack_b)
+		ft_printf("sdg");
 	if (ac >= 2)
 	{
 		list_init(&obj, av + 1);
-		push(&obj.stack_a, &obj.stack_b, "pb");
-		//sa(obj.stack_a);
-		// pb(&obj);
-		// pb(&obj);
 		ft_printf("Stack a\n");
 		print_list(obj.stack_a);
 		ft_printf("Stack b\n");
