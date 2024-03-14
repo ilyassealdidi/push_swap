@@ -6,13 +6,29 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 08:46:04 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/13 15:49:34 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/14 13:40:42 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
-long	*get_number(char *num)
+static void	free_array(char **strs)
+{
+	int	i;
+
+	if (!strs)
+		return ;
+	i = -1;
+	while (1)
+	{
+		free(strs[++i]);
+		if (!strs[i])
+			break ;
+	}
+	free(strs);
+}
+
+static long	*get_number(char *num)
 {
 	long	*number;
 	char	*ptr;
@@ -34,7 +50,7 @@ long	*get_number(char *num)
 	return (number);
 }
 
-t_list	*extract_numbers(char **strs)
+static t_list	*extract_numbers(char **strs)
 {
 	char	**nums;
 	long	*number;
@@ -47,15 +63,15 @@ t_list	*extract_numbers(char **strs)
 		i = -1;
 		nums = ft_split(*strs++, ' ');
 		if (!nums || !nums[0])
-			return (ft_lstclear(&head, free), free_memory(nums), NULL);
+			return (ft_lstclear(&head, free), free_array(nums), NULL);
 		while (nums[++i])
 		{
 			number = get_number(nums[i]);
 			if (!number || !ft_lstappenditem(&head, number))
 				return (free(number), ft_lstclear(&head, free),
-					free_memory(nums), NULL);
+					free_array(nums), NULL);
 		}
-		free_memory(nums);
+		free_array(nums);
 	}
 	return (head);
 }

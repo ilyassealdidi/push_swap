@@ -6,13 +6,13 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 09:26:25 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/13 18:16:47 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/14 13:41:40 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
-t_list	*ft_lstgetitem(t_list *lst, void *content)
+static t_list	*ft_lstgetitem(t_list *lst, void *content)
 {
 	while (lst != NULL)
 	{
@@ -34,18 +34,27 @@ int	ft_lstappenditem(t_list **lst, void *content)
 		*lst = item;
 	else if (!ft_lstgetitem(*lst, content))
 		return (ft_lstadd_back(lst, item), 1);
-	free(item);
-	return (1);
+	return (free(item), 0);
 }
 
-int	ft_lstswap_content(t_list *item1, t_list *item2)
+int	ft_lstshift_down(t_list **lst)
 {
-	void	*num;
+	t_list	*item;
+	t_list	*tmp;
 
-	if (!item1 || item2)
+	if (ft_lstsize(*lst) <= 1)
 		return (0);
-	num = item1->content;
-	item1->content = item2->content;
-	item2->content = num;
+	item = *lst;
+	while (item)
+	{
+		if (!item->next->next)
+		{
+			tmp = item->next;
+			item->next = NULL;
+		}
+		item = item->next;
+	}
+	tmp->next = *lst;
+	*lst = tmp;
 	return (1);
 }

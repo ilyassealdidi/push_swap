@@ -6,27 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:41:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/13 19:42:31 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/14 13:41:43 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	free_memory(char **strs)
-{
-	int	i;
-
-	if (!strs)
-		return ;
-	i = -1;
-	while (1)
-	{
-		free(strs[++i]);
-		if (!strs[i])
-			break ;
-	}
-	free(strs);
-}
+#include "includes/push_swap.h"
 
 void	exiter(void)
 {
@@ -47,12 +31,10 @@ int	main(int ac, char **av)
 {
 	t_object	obj;
 
-	//obj.stack_b = NULL;
-	if (obj.stack_b)
-		ft_printf("sdg");
 	if (ac >= 2)
 	{
 		list_init(&obj, av + 1);
+		ft_printf("\n__________\n");
 		ft_printf("Stack a\n");
 		print_list(obj.stack_a);
 		ft_printf("Stack b\n");

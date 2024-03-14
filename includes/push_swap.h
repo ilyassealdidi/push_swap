@@ -6,15 +6,15 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:30:57 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/13 19:23:57 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/14 13:40:58 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "utils/libft/libft.h"
-# include "utils/ft_printf/includes/libftprintf.h"
+# include "../libs/libft/libft.h"
+# include "../libs/ft_printf/includes/libftprintf.h"
 
 typedef struct s_object
 {
@@ -22,12 +22,20 @@ typedef struct s_object
 	t_list	*stack_b;
 }	t_object;
 
-int		ft_lstswap_content(t_list *item1, t_list *item2);
-void	swap(t_list *stack_a, t_list *stack_b);
-int		ft_lstappenditem(t_list **lst, void *content);
+/*		Parsing			*/
 void	list_init(t_object *obj, char **strs);
-void	exiter(void);
-void	free_memory(char **strs);
+
+/*		List Utilities	*/
+int		ft_lstappenditem(t_list **lst, void *content);
+int		ft_lstshift_down(t_list **lst);
+
+/*		Instructions	*/
 void	push(t_list **stack_from, t_list **stack_to, char *instruction);
+void	swap(t_list **stack_a, t_list **stack_b);
+void	rotate(t_list **stack_a, t_list **stack_b);
+void	reverse_rotate(t_list **stack_a, t_list **stack_b);
+
+/*		Utilities		*/
+void	exiter(void);
 
 #endif

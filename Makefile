@@ -1,31 +1,33 @@
 NAME = push_swap
 
-SRCS = *.c
+SRCS = src/*.c
 
 CFLAGS = -Wall -Wextra -Werror 
 
-LIBFT = utils/libft/libft.a
+LIBFT = libs/libft/libft.a
 
-FT_PRINTF = utils/ft_printf/libftprintf.a
+LIB = includes/push_swap.h
+
+FT_PRINTF = libs/ft_printf/libftprintf.a
 
 all : $(NAME)
 
-$(NAME): $(SRCS) $(LIBFT) $(FT_PRINTF) push_swap.h
+$(NAME): $(SRCS) $(LIBFT) $(FT_PRINTF) $(LIB)
 	cc $(CFLAGS) $(SRCS) $(LIBFT) $(FT_PRINTF) -o $(NAME)
 
 $(LIBFT) :
-	make bonus -C utils/libft/
+	make bonus -C libs/libft/
 
 $(FT_PRINTF) :
-	make -C utils/ft_printf/
+	make -C libs/ft_printf/
 
 clean :
-	make clean -C utils/libft/
-	make clean -C utils/ft_printf/
+	make clean -C libs/libft/
+	make clean -C libs/ft_printf/
 
 fclean :
-	make fclean -C utils/libft/
-	make fclean -C utils/ft_printf/
+	make fclean -C libs/libft/
+	make fclean -C libs/ft_printf/
 	$(RM) $(NAME)
 
 re : fclean all
