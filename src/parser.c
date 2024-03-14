@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 08:46:04 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/14 13:40:42 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/14 15:41:05 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static t_list	*extract_numbers(char **strs)
 void	list_init(t_object *obj, char **strs)
 {
 	obj->stack_a = extract_numbers(strs);
+	obj->stack_b = NULL;
 	if (!obj->stack_a)
 		exiter();
 }
