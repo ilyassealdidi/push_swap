@@ -6,21 +6,28 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 09:26:25 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/14 13:41:40 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/21 13:45:13 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
-static t_list	*ft_lstgetitem(t_list *lst, void *content)
+static int	set_index(t_list *list, t_list *new)
 {
-	while (lst != NULL)
+	t_list	*lst;
+
+	lst = list;
+	while (lst)
 	{
-		if (*(long *)(lst->content) == *(long *)content)
-			return (lst);
+		if (*(int *)(new->content) > *(int *)(lst->content))
+			new->index++;
+		else if (*(int *)(new->content) < *(int *)(lst->content))
+			lst->index++;
+		else
+			return (0);
 		lst = lst->next;
 	}
-	return (lst);
+	return (1);
 }
 
 int	ft_lstappenditem(t_list **lst, void *content)
@@ -30,9 +37,12 @@ int	ft_lstappenditem(t_list **lst, void *content)
 	item = ft_lstnew(content);
 	if (!item)
 		return (0);
+	item->index = 0;
+	if (!set_index(*lst, item))
+		return (free(item), 0);
 	if (!lst)
 		*lst = item;
-	else if (!ft_lstgetitem(*lst, content))
+	else
 		return (ft_lstadd_back(lst, item), 1);
 	return (free(item), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:24:11 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/10 08:24:14 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/18 00:12:52 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_list
 {
 	void			*content;
+	int				index;
 	struct s_list	*next;
 }		t_list;
 

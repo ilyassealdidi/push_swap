@@ -6,11 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 08:46:04 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/14 15:41:05 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/18 01:23:20 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 static void	free_array(char **strs)
 {

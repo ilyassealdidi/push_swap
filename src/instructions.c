@@ -6,11 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:44:06 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/14 13:41:37 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/18 01:22:52 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	ft_swap_top(t_list **lst)
 {

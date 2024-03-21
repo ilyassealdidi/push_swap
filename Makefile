@@ -1,34 +1,36 @@
 NAME = push_swap
-
-SRCS = src/*.c
-
-CFLAGS = -Wall -Wextra -Werror 
-
+SRCS = $(shell find src -name "*.c")
+OBJS = $(SRCS:.c=.o)
+CFLAGS = -Wall -Wextra -Werror
+INC = includes/push_swap.h
 LIBFT = libs/libft/libft.a
-
-LIB = includes/push_swap.h
-
 FT_PRINTF = libs/ft_printf/libftprintf.a
 
 all : $(NAME)
 
-$(NAME): $(SRCS) $(LIBFT) $(FT_PRINTF) $(LIB)
-	cc $(CFLAGS) $(SRCS) $(LIBFT) $(FT_PRINTF) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT) $(FT_PRINTF)
+	cc $(CFLAGS) $(OBJS) $(LIBFT) $(FT_PRINTF) -o $(NAME)
+
+%.o : %.c $(INC)
+	cc $(CFLAGS) -c $< -o $@
 
 $(LIBFT) :
-	make bonus -C libs/libft/
+	@make bonus -C libs/libft/
 
 $(FT_PRINTF) :
-	make -C libs/ft_printf/
+	@make -C libs/ft_printf/
 
 clean :
-	make clean -C libs/libft/
-	make clean -C libs/ft_printf/
+	@make clean -C libs/libft/
+	@make clean -C libs/ft_printf/
+	$(RM) $(OBJS)
 
-fclean :
-	make fclean -C libs/libft/
-	make fclean -C libs/ft_printf/
+fclean : clean
+	@make fclean -C libs/libft/
+	@make fclean -C libs/ft_printf/
 	$(RM) $(NAME)
 
 re : fclean all
 
+run : re
+	./push_swap $(shell seq -100 100 | gshuf -n 10)

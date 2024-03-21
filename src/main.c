@@ -6,11 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:41:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/14 15:41:09 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/21 15:10:38 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	exiter(void)
 {
@@ -18,13 +18,25 @@ void	exiter(void)
 	exit(1);
 }
 
-void	print_list(t_list *list)
+void	print_list(t_list	*list)
 {
-	while(list)
-	{
-		ft_printf("%d\n", *(int *)(list->content));
-		list = list->next;	
-	}	
+	if (list)
+	{	
+		ft_printf("\n\n");
+		ft_printf("Stack a\n__________________________\n\n");
+		while(list)
+		{
+			ft_printf("Index : %d \t Num : %d\n", list->index, *(int *)(list->content));
+			list = list->next;	
+		}
+		ft_printf("__________________________\n\n");
+	}
+}
+
+void	print_stacks(t_object obj)
+{
+	print_list(obj.stack_a);
+	print_list(obj.stack_b);
 }
 
 int	main(int ac, char **av)
@@ -34,11 +46,10 @@ int	main(int ac, char **av)
 	if (ac >= 2)
 	{
 		list_init(&obj, av + 1);
-		ft_printf("\n__________\n");
-		ft_printf("Stack a\n");
-		print_list(obj.stack_a);
-		ft_printf("Stack b\n");
-		print_list(obj.stack_b);
+		ft_printf("\n\n");
+		push(&obj.stack_a, &obj.stack_b, "pb");
+		// push(&obj.stack_a, &obj.stack_b, "pb");
+		print_stacks(obj);
 	}
 	else
 		ft_printf("Invalid number of arguments");
