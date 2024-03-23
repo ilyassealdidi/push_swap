@@ -1,10 +1,11 @@
 NAME = push_swap
 SRCS = $(shell find src -name "*.c")
 OBJS = $(SRCS:.c=.o)
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 INC = includes/push_swap.h
 LIBFT = libs/libft/libft.a
 FT_PRINTF = libs/ft_printf/libftprintf.a
+ARR = $(shell seq 100 0 | sort -R | tr '\n' ' ' )
 
 all : $(NAME)
 
@@ -32,5 +33,8 @@ fclean : clean
 
 re : fclean all
 
-run : re
-	./push_swap $(shell seq -100 100 | gshuf -n 10)
+run : all
+	./push_swap $(ARR)
+
+visualize : all
+	./visualizer-1.py $(ARR)

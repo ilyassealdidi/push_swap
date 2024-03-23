@@ -6,39 +6,15 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:41:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/21 15:10:38 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/23 17:42:31 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	exiter(void)
-{
-	ft_printf("Error\n");
-	exit(1);
-}
-
-void	print_list(t_list	*list)
-{
-	if (list)
-	{	
-		ft_printf("\n\n");
-		ft_printf("Stack a\n__________________________\n\n");
-		while(list)
-		{
-			ft_printf("Index : %d \t Num : %d\n", list->index, *(int *)(list->content));
-			list = list->next;	
-		}
-		ft_printf("__________________________\n\n");
-	}
-}
-
-void	print_stacks(t_object obj)
-{
-	print_list(obj.stack_a);
-	print_list(obj.stack_b);
-}
-
+void	print_list(t_list	*list, char cs);
+void	print_stacks(t_object obj);
+//TODO: check whether the list is already sorted
 int	main(int ac, char **av)
 {
 	t_object	obj;
@@ -46,12 +22,36 @@ int	main(int ac, char **av)
 	if (ac >= 2)
 	{
 		list_init(&obj, av + 1);
-		ft_printf("\n\n");
-		push(&obj.stack_a, &obj.stack_b, "pb");
-		// push(&obj.stack_a, &obj.stack_b, "pb");
-		print_stacks(obj);
+		//print_stacks(obj);
+		sort(&obj);
+		//print_stacks(obj);
 	}
 	else
 		ft_printf("Invalid number of arguments");
 	return (EXIT_SUCCESS);
+}
+
+// To be removed
+void	print_list(t_list	*list, char stack)
+{
+	if (list)
+	{
+		ft_printf("\n\n");
+		ft_printf("Stack %c : (%d numbers)\n__________________________\n\n",
+			stack, ft_lstsize(list));
+		while (list)
+		{
+			ft_printf("Index : %d \t Num : %d\n",
+				list->index, *(int *)(list->content));
+			list = list->next;
+		}
+		ft_printf("__________________________\n\n");
+	}
+}
+
+void	print_stacks(t_object obj)
+{
+	ft_printf("\n\n");
+	print_list(obj.stack_a, 'a');
+	print_list(obj.stack_b, 'b');
 }

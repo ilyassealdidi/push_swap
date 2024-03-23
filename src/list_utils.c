@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 09:26:25 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/21 13:45:13 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/23 12:10:19 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_lstappenditem(t_list **lst, void *content)
 	item = ft_lstnew(content);
 	if (!item)
 		return (0);
-	item->index = 0;
+	item->index = 1;
 	if (!set_index(*lst, item))
 		return (free(item), 0);
 	if (!lst)

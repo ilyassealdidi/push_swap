@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:30:57 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/14 13:40:58 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/23 12:03:07 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ typedef struct s_object
 	t_list	*stack_a;
 	t_list	*stack_b;
 }	t_object;
+
+/*		Sort			*/
+void	sort(t_object *obj);
 
 /*		Parsing			*/
 void	list_init(t_object *obj, char **strs);

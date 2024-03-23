@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:44:06 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/18 01:22:52 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/23 14:19:44 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	rotate(t_list **stack_a, t_list **stack_b)
 		(*stack_a)->next = NULL;
 		last->next = *stack_a;
 		*stack_a = item;
-		ft_printf("ra");
+		ft_printf("ra\n");
 	}
 	if (stack_b && *stack_b)
 	{
@@ -69,7 +69,7 @@ void	rotate(t_list **stack_a, t_list **stack_b)
 		(*stack_b)->next = NULL;
 		last->next = *stack_b;
 		*stack_b = item;
-		ft_printf("rb");
+		ft_printf("rb\n");
 	}
 }
 
