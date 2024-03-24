@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:00:40 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/23 18:07:24 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/24 22:55:10 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,36 @@ void	pull_chunk(t_object *obj, int s)
 int	push_chunk(t_object *obj, int s)
 {
 	static int	i;
-	static int	tmp = 1;
+	static int	pushed = 0;
 
-	if (obj->stack_a->index <= tmp * s / 3)
+	if (obj->stack_a->index <= s + pushed)
 	{
 		push(&obj->stack_a, &obj->stack_b, "pb");
-		if (i % 2)
+		if (obj->stack_a->index < pushed + (s / 2))
 			rotate(NULL, &obj->stack_b);
 		i++;
 	}
-	else if (i == tmp * s / 3)
-		tmp++;
 	else
 		rotate(&obj->stack_a, NULL);
-	return (tmp);
+	if (i == s)
+	{
+		pushed += i;
+		i = 0;
+		return (s);
+	}
+	return (0);
 }
 
 void	sort(t_object *obj)
 {
 	int			stack_size;
 
-	while (obj->stack_a)
+	stack_size = ft_lstsize(obj->stack_a);
+	while (stack_size > 3)
 	{
-		stack_size = ft_lstsize(obj->stack_a);
-		push_chunk(obj, stack_size);
+		stack_size -= push_chunk(obj, stack_size / 3);
 	}
+	// ft_sort_3();
 	// while (obj->stack_b)
 	// {
 	// 	pull_chunk(obj, stack_size);
