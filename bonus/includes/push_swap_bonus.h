@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:30:57 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/25 17:58:17 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/25 17:58:25 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
-# include "../libs/libft/libft.h"
-# include "../libs/ft_printf/includes/libftprintf.h"
+# include "../../libs/libft/libft.h"
+# include "../../libs/ft_printf/includes/libftprintf.h"
 
 typedef struct s_object
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	t_list	*instructions;
 }	t_object;
 
-char	*get_next_line(int fd);
 
+char	*get_next_line(int fd);
 /*		Sort			*/
 int		is_sorted(t_list *lst);
 void	sort_three(t_object *obj);

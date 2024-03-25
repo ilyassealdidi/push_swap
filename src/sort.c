@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:00:40 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/25 05:03:45 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/25 14:39:30 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,12 @@ void	pull_chunk(t_object *obj, int *size)
 
 	target = obj->stack_a->index - 1;
 	if (obj->stack_b->index == target
-		|| ft_lstlast(obj->stack_b)->index == target)
+		|| ft_lstlast(obj->stack_b)->index == target
+		|| obj->stack_b->next->index == target)
 	{
-		if (obj->stack_b->index != target)
+		if (obj->stack_b->next && obj->stack_b->next->index == target)
+			swap(NULL, &obj->stack_b);
+		else if (obj->stack_b->index != target)
 			reverse_rotate(NULL, &obj->stack_b);
 		push(&obj->stack_b, &obj->stack_a, "pa");
 		*size -= 1;
@@ -78,7 +81,6 @@ void	pull_chunk(t_object *obj, int *size)
 		else
 			rotate_and_push(obj, reverse_rotate, rotate, &target);
 	}
-
 }
 
 int	push_chunk(t_object *obj, int s)

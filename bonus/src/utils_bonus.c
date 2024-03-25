@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 09:25:27 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/25 17:12:43 by ialdidi          ###   ########.fr       */
+/*   Created: 2024/03/23 11:52:09 by ialdidi           #+#    #+#             */
+/*   Updated: 2024/03/25 18:18:45 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push_swap_bonus.h"
 
-char	*ft_strchr(const char *s, int c)
+int	is_sorted(t_list *lst)
 {
-	char	*string;
+	int	num;
+	int	is_sorted;
 
-	if (!s)
-		return (NULL);
-	string = (char *)s;
-	while (*string)
+	is_sorted = 1;
+	num = 0;
+	while (lst)
 	{
-		if (*string == (char)c)
-			return (string);
-		string++;
+		if (lst->index < num)
+			is_sorted = 0;
+		num++;
+		lst = lst->next;
 	}
-	if (*string == (char)c)
-		return (string);
-	return (0);
+	return (num * (is_sorted == 0));
+}
+
+void	exiter(void)
+{
+	ft_printf("Error\n");
+	exit(1);
 }

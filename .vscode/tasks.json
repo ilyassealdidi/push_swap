@@ -7,6 +7,7 @@
             "args": [
                 "-g",
                 "src/*.c",
+                "libs/get_next_line/get_next_line.c",
                 "libs/libft/libft.a",
                 "libs/ft_printf/libftprintf.a",
                 "-o",

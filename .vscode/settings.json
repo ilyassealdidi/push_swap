@@ -21,6 +21,7 @@
 		"streambuf": "c",
 		"string_view": "c",
 		"tuple": "c",
-		"vector": "c"
+		"vector": "c",
+		"push_swap_bonus.h": "c"
 	}
 }
