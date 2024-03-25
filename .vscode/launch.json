@@ -10,7 +10,7 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/push_swap_db",
 			"args": [
-				"3 15 17 10 12 19 20 11 5"
+				"-54 20 -69 -22 -12 75 54 -53 18 87 65 45 -4 86 28 22 99 -87 -18 80 -49"
 			],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",

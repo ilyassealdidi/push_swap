@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:30:57 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/23 12:03:07 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/25 02:18:35 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_object
 }	t_object;
 
 /*		Sort			*/
+int		is_sorted(t_list *lst);
+void	sort_three(t_object *obj);
 void	sort(t_object *obj);
 
 /*		Parsing			*/

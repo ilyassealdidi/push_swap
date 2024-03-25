@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:44:06 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/23 14:19:44 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/25 01:52:26 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	rotate(t_list **stack_a, t_list **stack_b)
 	if (stack_a && *stack_a)
 	{
 		item = (*stack_a)->next;
+		if (!item)
+			return ;
 		last = ft_lstlast(*stack_a);
 		(*stack_a)->next = NULL;
 		last->next = *stack_a;
@@ -65,6 +67,8 @@ void	rotate(t_list **stack_a, t_list **stack_b)
 	if (stack_b && *stack_b)
 	{
 		item = (*stack_b)->next;
+		if (!item)
+			return ;
 		last = ft_lstlast(*stack_b);
 		(*stack_b)->next = NULL;
 		last->next = *stack_b;
@@ -76,7 +80,7 @@ void	rotate(t_list **stack_a, t_list **stack_b)
 void	reverse_rotate(t_list **stack_a, t_list **stack_b)
 {
 	if (stack_a && ft_lstshift_down(stack_a))
-		ft_printf("rra");
+		ft_printf("rra\n");
 	if (stack_b && ft_lstshift_down(stack_b))
-		ft_printf("rrb");
+		ft_printf("rrb\n");
 }
