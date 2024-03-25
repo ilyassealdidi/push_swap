@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:45:21 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/25 18:17:56 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/25 18:34:29 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_instruction(char *ins)
 		"rra", "rrb", "rrr"};
 	i = -1;
 	while (++i < 11)
-	{
+	{//sa\n
 		if (!ft_strncmp(ins, arr[i], ft_strlen(arr[i])))
 			return (1);
 	}
@@ -38,7 +38,7 @@ int	is_instruction(char *ins)
 void	sort_check(t_object *obj, t_list *ins)
 {
 	//apply_instructions(obj, ins);
-	if (is_sorted(obj->stack_a) == 0 && !obj->stack_b)
+	if (!obj->stack_b && is_sorted(obj->stack_a) == 0)
 		ft_putstr_fd("OK\n", 1);
 	else
 		ft_putstr_fd("KO\n", 1);
