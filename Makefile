@@ -5,7 +5,7 @@ CFLAGS = #-Wall -Wextra -Werror
 INC = includes/push_swap.h
 LIBFT = libs/libft/libft.a
 FT_PRINTF = libs/ft_printf/libftprintf.a
-ARR = $(shell seq -100 100 | sort -R | head -n 21 | tr '\n' ' ')
+ARR = $(shell seq 0 500 | sort -R | tr '\n' ' ')
 
 all : $(NAME)
 

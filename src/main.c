@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:41:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/25 01:33:37 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/25 05:02:06 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_list(t_list	*list, char cs);
 void	print_stacks(t_object obj);
-//TODO: check whether the list is already sorted
+
 int	main(int ac, char **av)
 {
 	t_object	obj;
@@ -22,9 +22,9 @@ int	main(int ac, char **av)
 	if (ac >= 2)
 	{
 		list_init(&obj, av + 1);
-		print_stacks(obj);
+		//print_stacks(obj);
 		sort(&obj);
-		print_stacks(obj);
+		//print_stacks(obj);
 	}
 	else
 		ft_printf("Invalid number of arguments");
