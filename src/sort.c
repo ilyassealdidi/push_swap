@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:00:40 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/26 11:22:11 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/26 11:29:10 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	pull_chunk(t_object *obj, int *size)
 {
 	int			target;
 	int			tmp;
-	int			moves;
-	t_list		*h;
 
 	target = obj->stack_a->index - 1;
 	if (obj->stack_b->index == target
