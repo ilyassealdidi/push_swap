@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:30:57 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/25 17:58:17 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/26 11:18:02 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_object
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	int		max;
 }	t_object;
 
 char	*get_next_line(int fd);

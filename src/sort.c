@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:00:40 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/25 14:39:30 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/26 11:22:11 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ void	pull_chunk(t_object *obj, int *size)
 		push(&obj->stack_b, &obj->stack_a, "pa");
 		*size -= 1;
 	}
+	else if (ft_lstlast(obj->stack_a)->index == obj->max)
+	{
+		push(&obj->stack_b, &obj->stack_a, "pa");
+		rotate(&obj->stack_a, NULL);
+	}
 	else
 	{
 		tmp = *size / 2;
@@ -117,8 +122,9 @@ void	sort(t_object *obj)
 	tmp = size;
 	while (size > 3)
 		size -= push_chunk(obj, size / 3);
-	// return ;
+	return ;
 	sort_three(obj);
+	obj->max = *(int *)(ft_lstlast(obj->stack_a)->content);
 	size = tmp - 3;
 	while (obj->stack_b)
 		pull_chunk(obj, &size);
