@@ -8,7 +8,7 @@ CFLAGS = #-Wall -Wextra -Werror
 INC = includes/push_swap.h
 LIBFT = libs/libft/libft.a
 FT_PRINTF = libs/ft_printf/libftprintf.a
-ARR = $(shell seq 500 1 | tr '\n' ' ')
+ARR = $(shell seq 1 1000 | sort -R | tr '\n' ' ')
 
 all : $(NAME)
 
@@ -45,8 +45,8 @@ fclean : clean
 re : fclean all
 
 run : all
-	./push_swap $(ARR);
+	@./push_swap $(ARR);
 	@echo "";
 
 visualize : all
-	./visualizer-1.py $(ARR);
+	@./visualizer-1.py $(ARR)

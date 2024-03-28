@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:41:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/25 18:26:55 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/28 15:21:56 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	main(int ac, char **av)
 	return (EXIT_SUCCESS);
 }
 
-// TODO: to be deleted
 void	print_list(t_list	*list, char stack)
 {
 	if (list)

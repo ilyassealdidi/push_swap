@@ -22,6 +22,7 @@
 		"string_view": "c",
 		"tuple": "c",
 		"vector": "c",
-		"push_swap_bonus.h": "c"
+		"push_swap_bonus.h": "c",
+		"ratio": "c"
 	}
 }
