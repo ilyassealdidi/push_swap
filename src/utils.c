@@ -3,69 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 11:52:09 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/30 00:16:46 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/30 18:11:13 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// int	initial_or_second_part(t_list *lst, int target, int size)
-// {
-// 	t_item	*item;
+int	initial_or_second_part(t_stack stack, int target)
+{
+	t_list	*list;
+	t_item	*item;
+	int		size;
 
-// 	while (size--)
-// 	{
-// 		item = (t_item *)lst->content;
-// 		if (item->index == target)
-// 			return (1);
-// 		lst = lst->next;
-// 	}
-// 	return (2);
-// }
+	list = stack.list;
+	size = stack.length;
+	while (size--)
+	{
+		item = (t_item *)list->content;
+		if (item->index == target)
+			return (1);
+		list = list->next;
+	}
+	return (2);
+}
 
-// int	is_sorted(t_list *lst)
-// {
-// 	int		num;
-// 	int		is_sorted;
+int	is_sorted(t_list *lst)
+{
+	t_item	*item;
+	int		tmp;
 
-// 	is_sorted = 1;
-// 	num = 0;
-// 	while (lst)
-// 	{
-// 		if (lst->next
-// 			&& ((t_item *)lst->content)->index > ((t_item *)lst->next->content)->index)
-// 			is_sorted = 0;
-// 		num++;
-// 		lst = lst->next;
-// 	}
-// 	return (num * (is_sorted == 0));
-// }
+	tmp = 0;
+	while (lst)
+	{
+		item = (t_item *)lst->content;
+		if (item->index < tmp)
+			return (0);
+		tmp = item->index;
+		lst = lst->next;
+	}
+	return (1);
+}
 
-// void	sort_five(t_object *obj)
-// {
-// 	int	min;
 
-// 	min = ((obj->max > 5) * (obj->max - ft_lstsize(obj->stack_a))) + 1;
-// 	while (ft_lstsize(obj->stack_a) != 3)
-// 	{
-// 		if (is_sorted(obj->stack_a) == 0)
-// 			return ;
-// 		if (obj->stack_a->index == min)
-// 		{
-// 			push(&obj->stack_a, &obj->stack_b, "pb");
-// 			min++;
-// 		}
-// 		else if (initial_or_second_part(obj->stack_a, min, 5 / 2) == 1
-// 			|| obj->stack_a->next->index == min)
-// 			rotate(&obj->stack_a, NULL);
-// 		else
-// 			reverse_rotate(&obj->stack_a, NULL);
-// 	}
-// 	sort_three(obj);
-// }
 
 void	free_array(char **strs)
 {
@@ -82,7 +64,6 @@ void	free_array(char **strs)
 	}
 	free(strs);
 }
-
 
 void	exiter(void)
 {

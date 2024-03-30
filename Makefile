@@ -7,7 +7,7 @@ B_OBJS = $(B_SRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 INC = includes/push_swap.h
 LIBFT = libs/libft/libft.a
-ARR = $(shell seq 1 1000 | sort -R | tr '\n' ' ')
+ARR = $(shell seq 1 22 | sort -R | tr '\n' ' ')
 
 all : $(NAME)
 
@@ -21,7 +21,7 @@ $(NAME): $(OBJS) $(LIBFT)
 	cc $(CFLAGS) -c $< -o $@
 
 $(LIBFT) :
-	@make bonus -C libs/libft/
+	@make -C libs/libft/
 
 bonus : $(B_NAME)
 
@@ -39,7 +39,7 @@ fclean : clean
 re : fclean all
 
 run : all
-	@./push_swap $(ARR);
+	./push_swap $(ARR);
 	@echo "";
 
 visualize : all

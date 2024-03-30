@@ -60,3 +60,4 @@ test.c
 push_swap*
 !*.h
 *.py
+*.pdf

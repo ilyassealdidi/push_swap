@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 11:52:09 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/25 18:18:45 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/30 14:54:49 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,16 @@
 int	is_sorted(t_list *lst)
 {
 	int	num;
-	int	is_sorted;
 
-	is_sorted = 1;
 	num = 0;
 	while (lst)
 	{
 		if (lst->index < num)
-			is_sorted = 0;
-		num++;
+			return (0);
+		num = lst->index;
 		lst = lst->next;
 	}
-	return (num * (is_sorted == 0));
+	return (1);
 }
 
 void	exiter(void)

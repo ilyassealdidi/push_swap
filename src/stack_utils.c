@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils.c                                       :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/10 09:26:25 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/29 23:14:35 by ialdidi          ###   ########.fr       */
+/*   Created: 2024/03/30 15:51:41 by ialdidi           #+#    #+#             */
+/*   Updated: 2024/03/30 16:43:57 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_lstshift_down(t_list **lst)
+int	get_first_index(t_stack stack)
 {
-	t_list	*item;
-	t_list	*tmp;
+	return (((t_item *)stack.list->content)->index);
+}
 
-	if (ft_lstsize(*lst) <= 1)
-		return (0);
-	item = *lst;
-	while (item)
-	{
-		if (!item->next->next)
-		{
-			tmp = item->next;
-			item->next = NULL;
-		}
-		item = item->next;
-	}
-	tmp->next = *lst;
-	*lst = tmp;
-	return (1);
+int	get_last_index(t_stack stack)
+{
+	return (((t_item *)ft_lstlast(stack.list)->content)->index);
+}
+
+int	get_item_index(t_list *node)
+{
+	return (((t_item *)node->content)->index);
 }
