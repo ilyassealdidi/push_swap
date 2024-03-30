@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:00:40 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/28 21:02:26 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/29 15:11:36 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	pull_chunk(t_object *obj, int *size)
 	}
 	else
 	{
-		if (!first_or_second_part(obj->stack_b, target, *size / 2))
+		if (initial_or_second_part(obj->stack_b, target, *size / 2) == 1)
 			rotate(NULL, &obj->stack_b);
 		else
 			reverse_rotate(NULL, &obj->stack_b);
@@ -88,16 +88,15 @@ int	push_chunk(t_object *obj, int s)
 void	sort(t_object *obj)
 {
 	int		size;
-	int		tmp;
 
-	size = is_sorted(obj->stack_a);
+	obj->max = is_sorted(obj->stack_a);
 	if (!size)
 		return ;
-	tmp = size;
-	while (size > 3)
+	size = obj->max;
+	while (size > 5)
 		size -= push_chunk(obj, size / 3);
-	sort_three(obj);
-	size = tmp - 3;
+	sort_five(obj);
+	size = obj->max - 3;
 	while (obj->stack_b)
 		pull_chunk(obj, &size);
 	while (obj->stack_a->index != 1)

@@ -3,83 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 08:46:04 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/18 01:23:20 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/30 00:01:07 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	free_array(char **strs)
+static int	set_index(t_list *list, t_item *new)
 {
-	int	i;
+	t_item	*node;
 
-	if (!strs)
-		return ;
-	i = -1;
-	while (1)
+	while (list)
 	{
-		free(strs[++i]);
-		if (!strs[i])
-			break ;
+		node = (t_item *)list->content;
+		if (new->data > node->data)
+			new->index++;
+		else if (new->data < node->data)
+			node->index++;
+		else
+			return (0);
+		list = list->next;
 	}
-	free(strs);
+	return (1);
 }
 
-static long	*get_number(char *num)
+static int	insert_number(t_list **lst, int number)
 {
-	long	*number;
+	t_item	*item;
+	t_list	*node;
+
+	item = (t_item *)malloc(sizeof(t_item));
+	if (!item)
+		return (0);
+	item->data = number;
+	item->index = 1;
+	node = ft_lstnew(item);
+	if (!node)
+		return (free(item), 0);
+	if (!set_index(*lst, item))
+		return (free(node), free(item), 0);
+	if (!lst)
+		*lst = node;
+	else
+		return (ft_lstadd_back(lst, node), 1);
+	return (free(item), 0);
+}
+
+static long	get_number(char *num)
+{
 	char	*ptr;
 
 	if (ft_strspn(num, "-+0123456789") != ft_strlen(num))
-		return (NULL);
+		return (LONG_MAX);
 	ptr = ft_strpbrk(num, "-+");
 	if (ptr && ft_strpbrk(++ptr, "-+"))
-		return (NULL);
+		return (LONG_MAX);
 	ptr = ft_strpbrk(num, "0123456789");
 	if (!ptr || (ptr && ft_strpbrk(++ptr, "-+")))
-		return (NULL);
-	number = (long *)malloc(sizeof(long));
-	if (!number)
-		return (NULL);
-	*number = ft_atol(num);
-	if (*number < INT_MIN || *number > INT_MAX)
-		return (free(number), NULL);
-	return (number);
+		return (LONG_MAX);
+	return (ft_atol(num));
 }
 
-static t_list	*extract_numbers(char **strs)
+int	stack_init(t_object *obj, char **strs)
 {
+	t_stack	*stack;
 	char	**nums;
-	long	*number;
-	t_list	*head;
+	int		number;
 	int		i;
 
-	head = NULL;
+	stack = &obj->stack_a;
 	while (*strs)
 	{
 		i = -1;
 		nums = ft_split(*strs++, ' ');
 		if (!nums || !nums[0])
-			return (ft_lstclear(&head, free), free_array(nums), NULL);
+			return (ft_lstclear(&stack->list, free), free_array(nums), 0);
 		while (nums[++i])
 		{
 			number = get_number(nums[i]);
-			if (!number || !ft_lstappenditem(&head, number))
-				return (free(number), ft_lstclear(&head, free),
-					free_array(nums), NULL);
+			if (number < INT_MIN || number > INT_MAX
+				|| !insert_number(&stack->list, number))
+				return (ft_lstclear(&stack->list, free), free_array(nums), 0);
+			stack->length++;
 		}
 		free_array(nums);
 	}
-	return (head);
-}
-
-void	list_init(t_object *obj, char **strs)
-{
-	obj->stack_a = extract_numbers(strs);
-	obj->stack_b = NULL;
-	if (!obj->stack_a)
-		exiter();
+	return (1);
 }

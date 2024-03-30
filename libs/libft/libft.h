@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:24:11 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/18 00:12:52 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/29 21:51:24 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 
 # include <unistd.h>
 # include <string.h>
+# include <stdarg.h>
 # include <stdlib.h>
 # include <limits.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 8
+# endif
 
 typedef struct s_list
 {
 	void			*content;
-	int				index;
 	struct s_list	*next;
 }		t_list;
 
@@ -68,7 +72,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 /* ************************************************************************** */
-/*                                Bonus Part                                  */
+/*                          Linked List Functions                             */
 /* ************************************************************************** */
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -86,5 +90,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 long	ft_atol(const char *str);
 char	*ft_strpbrk(const char *s, const char *charset);
 size_t	ft_strspn(const char *s, const char *charset);
+char	*get_next_line(int fd);
+int		ft_printf(const char *s, ...);
 
 #endif

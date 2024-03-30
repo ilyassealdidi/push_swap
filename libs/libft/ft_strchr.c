@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:25:27 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/25 17:12:43 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/29 15:20:57 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char	*ft_strchr(const char *s, int c)
 {
 	char	*string;
 
-	if (!s)
-		return (NULL);
 	string = (char *)s;
 	while (*string)
 	{

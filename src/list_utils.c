@@ -3,49 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 09:26:25 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/23 12:10:19 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/29 23:14:35 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static int	set_index(t_list *list, t_list *new)
-{
-	t_list	*lst;
-
-	lst = list;
-	while (lst)
-	{
-		if (*(int *)(new->content) > *(int *)(lst->content))
-			new->index++;
-		else if (*(int *)(new->content) < *(int *)(lst->content))
-			lst->index++;
-		else
-			return (0);
-		lst = lst->next;
-	}
-	return (1);
-}
-
-int	ft_lstappenditem(t_list **lst, void *content)
-{
-	t_list	*item;
-
-	item = ft_lstnew(content);
-	if (!item)
-		return (0);
-	item->index = 1;
-	if (!set_index(*lst, item))
-		return (free(item), 0);
-	if (!lst)
-		*lst = item;
-	else
-		return (ft_lstadd_back(lst, item), 1);
-	return (free(item), 0);
-}
 
 int	ft_lstshift_down(t_list **lst)
 {

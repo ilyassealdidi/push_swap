@@ -1,19 +1,21 @@
 NAME = push_swap
 B_NAME = checker
-SRCS = $(shell find src -name "*.c") libs/get_next_line/get_next_line.c
+SRCS = $(shell find src -name "*.c")
 OBJS = $(SRCS:.c=.o)
 B_SRCS = $(shell find bonus/src -name "*.c")
-B_OBJS = $(B_SRCS:.c=.o) libs/get_next_line/get_next_line.c
-CFLAGS = #-Wall -Wextra -Werror
+B_OBJS = $(B_SRCS:.c=.o)
+CFLAGS = -Wall -Wextra -Werror
 INC = includes/push_swap.h
 LIBFT = libs/libft/libft.a
-FT_PRINTF = libs/ft_printf/libftprintf.a
 ARR = $(shell seq 1 1000 | sort -R | tr '\n' ' ')
 
 all : $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(FT_PRINTF)
-	cc $(CFLAGS) $(OBJS) $(LIBFT) $(FT_PRINTF) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	cc $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+
+%_bonus.o : %_bonus.c bonus/includes/push_swap_bonus.h
+	cc $(CFLAGS) -c $< -o $@
 
 %.o : %.c $(INC)
 	cc $(CFLAGS) -c $< -o $@
@@ -21,25 +23,17 @@ $(NAME): $(OBJS) $(LIBFT) $(FT_PRINTF)
 $(LIBFT) :
 	@make bonus -C libs/libft/
 
-$(FT_PRINTF) :
-	@make -C libs/ft_printf/
-
 bonus : $(B_NAME)
 
-$(B_NAME): $(B_OBJS) $(LIBFT) $(FT_PRINTF)
-	cc $(CFLAGS) $(B_OBJS) $(LIBFT) $(FT_PRINTF) -o $(B_NAME)
-
-%_bonus.o : %_bonus.c bonus/includes/push_swap_bonus.h
-	cc $(CFLAGS) -c $< -o $@
+$(B_NAME): $(B_OBJS) $(LIBFT)
+	cc $(CFLAGS) $(B_OBJS) $(LIBFT) -o $(B_NAME)
 
 clean :
 	@make clean -C libs/libft/
-	@make clean -C libs/ft_printf/
 	$(RM) $(OBJS)
 
 fclean : clean
 	@make fclean -C libs/libft/
-	@make fclean -C libs/ft_printf/
 	$(RM) $(NAME)
 
 re : fclean all
