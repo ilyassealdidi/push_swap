@@ -30,11 +30,11 @@ $(B_NAME): $(B_OBJS) $(LIBFT)
 
 clean :
 	@make clean -C libs/libft/
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(B_OBJS)
 
 fclean : clean
 	@make fclean -C libs/libft/
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(B_NAME)
 
 re : fclean all
 

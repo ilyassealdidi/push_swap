@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:41:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 12:32:54 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/31 14:55:25 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ void	print_stacks(t_object obj)
 	print_list(obj.stack_b, 'b');
 }
 
-void	f(void)
-{
-	system("leaks push_swap");
-}
+// void	f(void)
+// {
+// 	system("leaks push_swap");
+// }
 
 int	main(int ac, char **av)
 {
 	t_object	obj;
 
-	atexit(f);
+	//atexit(f);
 	if (ac < 2)
 		return (ft_printf("Invalid number of arguments"), EXIT_FAILURE);
 	ft_memset(&obj, 0, sizeof(obj));

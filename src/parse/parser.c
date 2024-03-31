@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 08:46:04 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 12:29:51 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/31 14:59:59 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	stack_init(t_object *obj, char **strs)
 {
 	t_stack	*stack;
 	char	**nums;
-	int		number;
+	long	number;
 	int		i;
 
 	stack = &obj->stack_a;
