@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:30:57 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/30 18:30:14 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/31 01:19:13 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,5 @@ void	sort(t_object *obj);
 int		get_item_index(t_list *node);
 int		get_first_index(t_stack stack);
 int		get_last_index(t_stack stack);
-
-/*		Utils				*/
-void	exiter(void);
-void	free_array(char **strs);
 
 #endif

@@ -6,11 +6,27 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 08:46:04 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/30 13:56:05 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/31 01:13:31 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static void	free_array(char **strs)
+{
+	int	i;
+
+	if (!strs)
+		return ;
+	i = -1;
+	while (1)
+	{
+		free(strs[++i]);
+		if (!strs[i])
+			break ;
+	}
+	free(strs);
+}
 
 static int	set_index(t_list *list, t_item *new)
 {

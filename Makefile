@@ -7,7 +7,7 @@ B_OBJS = $(B_SRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 INC = includes/push_swap.h
 LIBFT = libs/libft/libft.a
-ARR = $(shell seq 1 22 | sort -R | tr '\n' ' ')
+ARR = $(shell seq 500 1 | sort -R | tr '\n' ' ')
 
 all : $(NAME)
 
@@ -39,8 +39,11 @@ fclean : clean
 re : fclean all
 
 run : all
-	./push_swap $(ARR);
-	@echo "";
+	$(eval ARR = $(shell seq 500 1 | tr '\n' ' '))
+	@echo $(ARR) >> file
+	@./push_swap $(ARR) | wc -l;
+	@sleep 1
+	@$(MAKE) run
 
 visualize : all
 	@./visualizer-1.py $(ARR)

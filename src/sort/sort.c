@@ -6,11 +6,12 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:00:40 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/30 18:52:30 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/31 01:17:46 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
+
 
 static void	sort_three(t_object *obj)
 {
@@ -44,7 +45,7 @@ static void	sort_rest(t_object *obj)
 		}
 		else if (initial_or_second_part(obj->stack_a, min) == 1)
 			ra(obj);
-		else
+		else if (initial_or_second_part(obj->stack_a, min) == 2)
 			rra(obj);
 	}
 	sort_three(obj);
@@ -97,12 +98,17 @@ int	push_chunk(t_object *obj, int s)
 void	sort(t_object *obj)
 {
 	int		size;
+	int		pushed;
 
 	if (is_sorted(obj->stack_a.list))
 		return ;
 	size = obj->stack_a.length;
-	while (obj->stack_a.length > 5)
-		size -= push_chunk(obj, size / 3);
+	pushed = size;
+	while (obj->stack_a.length > 5 || pushed == 0)
+	{
+		pushed = push_chunk(obj, size / 3);
+		size -= pushed;
+	}
 	sort_rest(obj);
 	while (obj->stack_b.length > 0)
 		pull_chunk(obj);
