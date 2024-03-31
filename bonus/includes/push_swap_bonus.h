@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:30:57 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 14:30:17 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/31 20:26:51 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define PUSH_SWAP_BONUS_H
 
 # include "../../libs/libft/libft.h"
-
-// typedef struct s_instruction
-// {
-// 	/* data */
-// };
-// typedef void	(*t_func)();
 
 typedef struct s_item
 {

@@ -6,12 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:00:40 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 01:17:46 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/31 20:24:20 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
 
 static void	sort_three(t_object *obj)
 {

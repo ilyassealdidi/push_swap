@@ -6,13 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 12:38:04 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 14:29:11 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/31 19:46:45 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap_bonus.h"
-
-
 
 static void	execute_instruction(t_object *obj, char *ins)
 {
@@ -41,6 +39,8 @@ static int	is_instruction(char *ins)
 	int		i;
 	char	**arr;
 
+	if (*ins == '\n')
+		return (0);
 	arr = (char *[]){"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr",
 		"rra", "rrb", "rrr"};
 	i = -1;
@@ -68,8 +68,6 @@ static int	instructions_init(t_object *obj)
 			return (free(line), free(node), 0);
 		ft_lstadd_back(&obj->instructions, node);
 	}
-	if (!obj->instructions)
-		return (0);
 	return (1);
 }
 
@@ -96,7 +94,7 @@ int	check_sort(t_object *obj)
 		exit(1);
 	}
 	apply_instructions(obj);
-	if (obj->stack_b.length == 0 && is_sorted(obj->stack_a.list))
+	if ((obj->stack_b.length == 0 && is_sorted(obj->stack_a.list)))
 		status = 1;
 	else
 		status = 0;

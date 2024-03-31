@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 08:46:04 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 12:34:03 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/31 20:24:31 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static int	set_index(t_list *list, t_item *new)
 			return (0);
 		list = list->next;
 	}
-
 	return (1);
 }
 
