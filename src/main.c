@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:41:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 01:15:52 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/31 12:32:54 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	main(int ac, char **av)
 	ft_memset(&obj, 0, sizeof(obj));
 	if (!stack_init(&obj, av + 1))
 	{
-		ft_printf("Error\n");
-		exit(1);
+		ft_putstr_fd("Error\n", 2);
+		return (1);
 	}
 	sort(&obj);
 	ft_lstclear(&obj.stack_a.list, free);

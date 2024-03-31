@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:30:57 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/25 17:58:25 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/31 14:30:17 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,62 @@
 # define PUSH_SWAP_BONUS_H
 
 # include "../../libs/libft/libft.h"
-# include "../../libs/ft_printf/includes/libftprintf.h"
+
+// typedef struct s_instruction
+// {
+// 	/* data */
+// };
+// typedef void	(*t_func)();
+
+typedef struct s_item
+{
+	int			data;
+	int			index;
+}	t_item;
+
+typedef struct s_stack
+{
+	t_list		*list;
+	int			length;
+}	t_stack;
 
 typedef struct s_object
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	t_list	*instructions;
+	t_stack		stack_a;
+	t_stack		stack_b;
+	t_list		*instructions;
+	int			max;
 }	t_object;
 
+/*		Parsing				*/
+int		stack_init(t_object *obj, char **strs);
 
-char	*get_next_line(int fd);
-/*		Sort			*/
+/*		Instructions		*/
+void	pa(t_object *obj);
+void	pb(t_object *obj);
+void	sa(t_object *obj);
+void	sb(t_object *obj);
+void	ss(t_object *obj);
+void	ra(t_object *obj);
+void	rb(t_object *obj);
+void	rr(t_object *obj);
+void	rra(t_object *obj);
+void	rrb(t_object *obj);
+void	rrr(t_object *obj);
+
+/*		Sort				*/
+int		initial_or_second_part(t_stack stack, int target);
 int		is_sorted(t_list *lst);
-void	sort_three(t_object *obj);
 void	sort(t_object *obj);
 
-/*		Parsing			*/
-void	list_init(t_object *obj, char **strs);
+/*		Stack Utilities		*/
+int		get_item_index(t_list *node);
+int		get_first_index(t_stack stack);
+int		get_last_index(t_stack stack);
 
-/*		List Utilities	*/
-int		ft_lstappenditem(t_list **lst, void *content);
-int		ft_lstshift_down(t_list **lst);
+/*		Checker				*/
+int		check_sort(t_object *obj);
 
-/*		Instructions	*/
-void	push(t_list **stack_from, t_list **stack_to, char *instruction);
-void	swap(t_list **stack_a, t_list **stack_b);
-void	rotate(t_list **stack_a, t_list **stack_b);
-void	reverse_rotate(t_list **stack_a, t_list **stack_b);
-
-/*		Utilities		*/
-void	exiter(void);
-
-/*		To be removed	*/
-void	print_list(t_list	*list, char cs);
-void	print_stacks(t_object obj);
-
+/*		Utilities			*/
+void	destroy_object(t_object *obj);
 #endif

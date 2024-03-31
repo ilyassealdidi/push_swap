@@ -5,30 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 11:52:09 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/30 14:54:49 by ialdidi          ###   ########.fr       */
+/*   Created: 2024/03/31 14:29:37 by ialdidi           #+#    #+#             */
+/*   Updated: 2024/03/31 14:30:00 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap_bonus.h"
 
-int	is_sorted(t_list *lst)
+void	destroy_object(t_object *obj)
 {
-	int	num;
-
-	num = 0;
-	while (lst)
-	{
-		if (lst->index < num)
-			return (0);
-		num = lst->index;
-		lst = lst->next;
-	}
-	return (1);
-}
-
-void	exiter(void)
-{
-	ft_printf("Error\n");
-	exit(1);
+	ft_lstclear(&obj->stack_a.list, free);
+	ft_lstclear(&obj->stack_b.list, free);
+	ft_lstclear(&obj->instructions, free);
 }
