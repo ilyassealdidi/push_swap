@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (ft_printf("Invalid number of arguments"), EXIT_FAILURE);
-	ft_memset(&obj, 0, sizeof(obj));
+	obj = (t_object){};
 	if (!stack_init(&obj, av + 1))
 	{
 		ft_putstr_fd("Error\n", 2);
