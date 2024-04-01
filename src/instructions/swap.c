@@ -41,6 +41,6 @@ void	sb(t_object *obj)
 
 void	ss(t_object *obj)
 {
-	if (swap(&obj->stack_a.list) || swap(&obj->stack_b.list))
+	if (swap(&obj->stack_a.list) + swap(&obj->stack_b.list))
 		ft_printf("%s\n", "ss");
 }
