@@ -41,6 +41,6 @@ void	rb(t_object *obj)
 
 void	rr(t_object *obj)
 {
-	if (rotate(&obj->stack_a.list) || rotate(&obj->stack_b.list))
+	if (rotate(&obj->stack_a.list) + rotate(&obj->stack_b.list))
 		ft_printf("%s\n", "rr");
 }
