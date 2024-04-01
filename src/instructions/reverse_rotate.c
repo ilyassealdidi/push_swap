@@ -48,7 +48,7 @@ void	rrb(t_object *obj)
 
 void	rrr(t_object *obj)
 {
-	if (reverse_rotate(&obj->stack_a.list)
-		|| reverse_rotate(&obj->stack_b.list))
+	if (reverse_rotate(&obj->stack_a.list) 
+		+ reverse_rotate(&obj->stack_b.list))
 		ft_printf("rrr\n");
 }
