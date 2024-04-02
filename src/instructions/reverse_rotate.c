@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 14:19:56 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 20:09:50 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/04/02 17:21:32 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	reverse_rotate(t_list **lst)
 	t_list	*item;
 	t_list	*tmp;
 
-	if (!lst || ft_lstsize(*lst) <= 1)
+	if (!*lst || !(*lst)->next)
 		return (0);
 	item = *lst;
 	while (item)
@@ -48,7 +48,7 @@ void	rrb(t_object *obj)
 
 void	rrr(t_object *obj)
 {
-	if (reverse_rotate(&obj->stack_a.list) 
+	if (reverse_rotate(&obj->stack_a.list)
 		+ reverse_rotate(&obj->stack_b.list))
 		ft_printf("rrr\n");
 }

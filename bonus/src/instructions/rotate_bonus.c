@@ -6,24 +6,24 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 14:09:37 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 20:11:36 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/04/02 18:33:26 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap_bonus.h"
 
-static void	rotate(t_list **list)
+static void	rotate(t_list **lst)
 {
 	t_list	*item;
 	t_list	*last;
 
-	if (!list || ft_lstsize(*list) <= 1)
+	if (!*lst || !(*lst)->next)
 		return ;
-	item = (*list)->next;
-	last = ft_lstlast(*list);
-	(*list)->next = NULL;
-	last->next = *list;
-	*list = item;
+	item = (*lst)->next;
+	last = ft_lstlast(*lst);
+	(*lst)->next = NULL;
+	last->next = *lst;
+	*lst = item;
 }
 
 void	ra(t_object *obj)

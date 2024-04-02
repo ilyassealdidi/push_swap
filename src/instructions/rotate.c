@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 14:09:37 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 20:06:57 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/04/02 17:21:34 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	rotate(t_list **list)
 	t_list	*item;
 	t_list	*last;
 
-	if (!list || ft_lstsize(*list) <= 1)
+	if (!*list || !(*list)->next)
 		return (0);
 	item = (*list)->next;
 	last = ft_lstlast(*list);

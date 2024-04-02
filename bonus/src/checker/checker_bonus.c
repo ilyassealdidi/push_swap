@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 12:38:04 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 19:46:45 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/04/02 18:37:44 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 static void	execute_instruction(t_object *obj, char *ins)
 {
-	int		i;
-	char	**arr;
-	void	**functions;
-	void	(*func)(t_object *);
-
-	arr = (char *[]){"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra",
+	int			i;
+	static char	*arr[] = {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra",
 		"rrb", "rrr"};
-	functions = (void *[]){sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
+	static void	(*func[])(t_object *) = {sa, sb, ss, pa, pb, ra, rb, rr, rra,
+		rrb, rrr};
+
 	i = -1;
 	while (++i < 11)
 	{
 		if (ft_strncmp(ins, arr[i], ft_strlen(ins) - 1) == 0)
 		{
-			func = functions[i];
-			func(obj);
+			func[i](obj);
 			return ;
 		}
 	}
@@ -36,13 +33,12 @@ static void	execute_instruction(t_object *obj, char *ins)
 
 static int	is_instruction(char *ins)
 {
-	int		i;
-	char	**arr;
+	int			i;
+	static char	*arr[] = {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra",
+		"rrb", "rrr"};
 
 	if (*ins == '\n')
 		return (0);
-	arr = (char *[]){"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr",
-		"rra", "rrb", "rrr"};
 	i = -1;
 	while (++i < 11)
 	{
@@ -94,10 +90,7 @@ int	check_sort(t_object *obj)
 		exit(1);
 	}
 	apply_instructions(obj);
-	if ((obj->stack_b.length == 0 && is_sorted(obj->stack_a.list)))
-		status = 1;
-	else
-		status = 0;
+	status = (obj->stack_b.length == 0 && is_sorted(obj->stack_a.list));
 	destroy_object(obj);
 	return (status);
 }

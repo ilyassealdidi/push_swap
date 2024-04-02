@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:30:57 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 20:26:51 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/04/02 18:38:11 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,12 @@ void	rra(t_object *obj);
 void	rrb(t_object *obj);
 void	rrr(t_object *obj);
 
-/*		Sort				*/
-int		initial_or_second_part(t_stack stack, int target);
-int		is_sorted(t_list *lst);
-void	sort(t_object *obj);
-
-/*		Stack Utilities		*/
-int		get_item_index(t_list *node);
-int		get_first_index(t_stack stack);
-int		get_last_index(t_stack stack);
-
 /*		Checker				*/
 int		check_sort(t_object *obj);
 
 /*		Utilities			*/
 void	destroy_object(t_object *obj);
+int		is_sorted(t_list *lst);
+int		get_item_index(t_list *node);
+
 #endif

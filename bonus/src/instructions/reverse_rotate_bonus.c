@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 14:19:56 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 20:10:32 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/04/02 17:21:57 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	reverse_rotate(t_list **lst)
 	t_list	*item;
 	t_list	*tmp;
 
-	if (!lst || ft_lstsize(*lst) <= 1)
+	if (!*lst || !(*lst)->next)
 		return ;
 	item = *lst;
 	while (item)

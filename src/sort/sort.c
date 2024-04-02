@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:00:40 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 20:24:20 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/04/02 15:54:51 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	sort_three(t_object *obj)
 	if (get_item_index(obj->stack_a.list)
 		> get_item_index(obj->stack_a.list->next))
 		sa(obj);
-	obj->max = get_last_index(obj->stack_a);
 }
 
 static void	sort_rest(t_object *obj)
@@ -65,7 +64,7 @@ void	pull_chunk(t_object *obj)
 		(rrb(obj), pa(obj));
 	else if (last_a == target)
 		rra(obj);
-	else if (last_a == obj->max || get_first_index(obj->stack_b) > target)
+	else if (last_a == obj->max)
 		(pa(obj), ra(obj));
 	else if (last_b > last_a)
 		(rrb(obj), pa(obj), ra(obj));

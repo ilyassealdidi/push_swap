@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 14:13:23 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/31 20:03:21 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/04/02 17:21:37 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	swap(t_list **lst)
 	t_list	*item;
 	t_list	*tmp;
 
-	if (!lst || ft_lstsize(*lst) <= 1)
+	if (!*lst || !(*lst)->next)
 		return (0);
 	tmp = (*lst)->next;
 	item = tmp->next;
